@@ -1,4 +1,9 @@
 {
     "code-runner.runInTerminal": true,
-    "code-runner.saveAllFilesBeforeRun": true
+    "code-runner.saveAllFilesBeforeRun": true,
+    "files.associations": {
+        "*.ejs": "html",
+        "*.tcc": "cpp",
+        "list": "cpp"
+    }
 }
