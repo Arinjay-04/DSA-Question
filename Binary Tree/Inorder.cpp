@@ -1,34 +1,26 @@
 //////////////////////////////////  Iterative Approach ////////////////////////////////
 
 
-vector<int> Inorder(Node* root){
-    vector<int> inorder;
-    if(root == NULL){
+vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> inorder;
+        stack<TreeNode*> st;
+
+        TreeNode* node = root;
+
+        while(node || !st.empty()){
+            while(node){
+                st.push(node);
+                node = node->left;
+            }
+
+            node = st.top();
+            st.pop();
+            inorder.push_back(node->val);
+            node = node->right;
+        }
+
         return inorder;
     }
-    stack<Node*> st;
-
-
-    Node* node = root;
-    
-
-    while(!st.empty()){
-       
-       if(node != NULL){
-        st.push(root);
-        node = node->left;
-       }
-       else{
-        node = st.top();
-        st.pop();
-        inorder.push(node->data);
-        node = node->right;
-
-       }
-    }
-    return inorder;
-
-}
 
 
 

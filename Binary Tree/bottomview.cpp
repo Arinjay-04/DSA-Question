@@ -6,8 +6,8 @@ class Solution {
         if(root == NULL){
             return v;
         }
-        map<int, int> m;
-        queue<pair<Node*, int>> q;
+        map<int, int> m;  /// why use map? because we can get element of final vector ascending order of thiervertical level
+        queue<pair<Node*, int>> q;  /// that mean (first the leftmost node till the rightmost node)
         
         q.push({root , 0});
         
