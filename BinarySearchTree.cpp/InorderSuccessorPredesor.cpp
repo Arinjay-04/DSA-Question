@@ -90,3 +90,58 @@ pair<int, int> predecessorSuccessor(TreeNode *root, int key)
 
     return result;
 }
+
+
+
+
+class Solution
+{
+    public:
+    void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
+    {
+        // Your code goes here
+        if(!root){
+            pre = NULL;
+            suc = NULL;
+            return;
+        }
+        
+        Node* node = root;
+        pre=NULL;
+        suc = NULL;
+        
+        while(node){
+            if(node->key == key){
+                if(node->left){
+                    Node* temp = node->left;
+                    while(temp->right){
+                        temp = temp->right;
+                    }
+                    
+                    pre = temp;
+                }
+                
+                if(node ->right){
+                    Node* temp = node->right;
+                    
+                    while(temp->left){
+                        temp = temp->left;
+                    }
+                    
+                    suc = temp;
+                    
+                }
+                
+                break;
+            }
+            else if(node->key > key){
+                suc = node;
+                node = node->left;
+            }else{
+                pre = node;
+                node = node->right;
+            }
+        }
+        
+    }
+};

@@ -51,6 +51,59 @@ public:
 
         return node->val;
     }
+
+
+
+
+
+
+
+
+
+    
+
+    class BSTIterator {
+public:
+    TreeNode* node;
+    stack<int> st;
+    void helper(TreeNode* root, vector<int> &v){
+        if(!root){
+            return;
+        }
+        helper(root->left, v);
+        v.push_back(root->val);
+        helper(root->right, v);
+    }
+    BSTIterator(TreeNode* root) {
+        this->node = root;
+        vector<int> v;
+        helper(root, v);
+        reverse(v.begin(), v.end());
+        for(int i=0; i<v.size(); i++){
+            st.push(v[i]);
+        }
+    }
+    
+    int next() {
+        if(!st.empty()){
+            int temp = st.top();
+            st.pop();
+
+            return temp;
+        }
+
+        return -1;
+    }
+    
+    bool hasNext() {
+        if(!st.empty()){
+            return true;
+        }
+
+        return false;
+    }
+};
+
     
 
 };
